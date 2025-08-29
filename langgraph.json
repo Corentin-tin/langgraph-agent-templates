@@ -1,0 +1,9 @@
+{
+  "dependencies": ["./apps/react_agent", "./apps/rag_agent", "./packages/shared"],
+  "graphs": {
+    "react_agent": "react_agent.graph:build_graph",
+    "rag_indexer": "rag_agent.graph:indexer_graph",
+    "rag_retrieval": "rag_agent.graph:retrieval_graph"
+  },
+  "env": ".env"
+}
