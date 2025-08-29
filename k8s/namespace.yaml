@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: langgraph-agents
+  labels:
+    app.kubernetes.io/name: langgraph-agents
+    app.kubernetes.io/part-of: langgraph-agent-templates

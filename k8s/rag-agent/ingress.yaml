@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rag-agent
+  namespace: langgraph-agents
+  labels:
+    app: rag-agent
+    app.kubernetes.io/name: rag-agent
+    app.kubernetes.io/part-of: langgraph-agent-templates
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+spec:
+  tls:
+    - hosts:
+        - rag-agent.yourdomain.com
+      secretName: rag-agent-tls
+  rules:
+    - host: rag-agent.yourdomain.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: rag-agent
+                port:
+                  name: http
