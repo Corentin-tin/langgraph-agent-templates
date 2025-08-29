@@ -1,0 +1,54 @@
+[project]
+name = "rag-agent"
+version = "0.1.0"
+requires-python = ">=3.12"
+description = "RAG research agent implementation using LangGraph"
+authors = [{name = "LangGraph Agent Templates", email = "support@example.com"}]
+
+dependencies = [
+    "langgraph>=0.6.0,<0.7.0",
+    "langchain>=0.2.14",
+    "langchain-openai>=0.1.22",
+    "langchain-anthropic>=0.1.23",
+    "langchain-fireworks>=0.1.7",
+    "langchain-elasticsearch>=0.2.0",
+    "langchain-pinecone>=0.1.0",
+    "langchain-mongodb>=0.1.0",
+    "langchain-cohere>=0.1.0",
+    "fastapi>=0.111",
+    "uvicorn>=0.30",
+    "python-dotenv>=1.0.1",
+    "typing-extensions>=4.12",
+    "shared",
+    "faiss-cpu>=1.8.0",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.3",
+    "ruff>=0.5",
+    "black>=24.0",
+    "mypy>=1.11",
+    "pytest-asyncio>=0.23"
+]
+
+[tool.uv.sources]
+shared = { workspace = true }
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.mypy]
+strict = true
+python_version = "3.12"

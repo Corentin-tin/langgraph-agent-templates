@@ -1,0 +1,8 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "indexer": "./src/rag_agent/graph.py:indexer_graph",
+    "retrieval_graph": "./src/rag_agent/graph.py:retrieval_graph"
+  },
+  "env": ".env"
+}

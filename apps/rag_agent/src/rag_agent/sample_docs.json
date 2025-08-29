@@ -1,0 +1,50 @@
+[
+  {
+    "content": "LangGraph is a library for building stateful, multi-actor applications with LLMs, used to create agent and multi-agent workflows. Compared to other LLM frameworks, it offers these core benefits: cycles, controllability, and persistence. LangGraph allows you to define flows that involve cycles, essential for most agentic architectures, where you call an LLM in a loop, asking it what action to take next.",
+    "metadata": {
+      "source": "LangGraph Documentation",
+      "title": "What is LangGraph?",
+      "url": "https://langchain-ai.github.io/langgraph/"
+    }
+  },
+  {
+    "content": "LangChain is a framework for developing applications powered by language models. It enables applications that can connect a language model to other sources of data, allow a language model to interact with its environment, and create more powerful and differentiated applications.",
+    "metadata": {
+      "source": "LangChain Documentation", 
+      "title": "Introduction to LangChain",
+      "url": "https://python.langchain.com/docs/get_started/introduction"
+    }
+  },
+  {
+    "content": "Retrieval-Augmented Generation (RAG) is a technique that combines the power of large language models with external knowledge retrieval. RAG works by first retrieving relevant documents from a knowledge base, then using those documents as context when generating responses.",
+    "metadata": {
+      "source": "RAG Guide",
+      "title": "Understanding RAG",
+      "url": "https://docs.example.com/rag"
+    }
+  },
+  {
+    "content": "The ReAct (Reasoning and Acting) paradigm combines reasoning and acting with LLMs. ReAct prompts LLMs to generate verbal reasoning traces and actions for a task. This allows for greater synergy between the two: reasoning traces help the model induce, track, and update action plans as well as handle exceptions, while actions allow it to interface with external sources.",
+    "metadata": {
+      "source": "ReAct Paper Summary",
+      "title": "ReAct: Synergizing Reasoning and Acting",
+      "url": "https://arxiv.org/abs/2210.03629"
+    }
+  },
+  {
+    "content": "LangGraph Studio is a specialized agent IDE that enables visualization, interaction, and debugging for LangGraph applications. It provides a graphical interface to understand your agent's behavior, step through executions, and modify state as needed.",
+    "metadata": {
+      "source": "LangGraph Studio Docs",
+      "title": "LangGraph Studio Overview", 
+      "url": "https://langchain-ai.github.io/langgraph/concepts/langgraph_studio/"
+    }
+  },
+  {
+    "content": "Vector databases store and retrieve data based on vector embeddings, making them essential for RAG applications. Popular vector databases include Pinecone, Elasticsearch, Qdrant, and FAISS. Each has different strengths in terms of scalability, performance, and features.",
+    "metadata": {
+      "source": "Vector Database Guide",
+      "title": "Choosing a Vector Database",
+      "url": "https://docs.example.com/vector-dbs"
+    }
+  }
+]
