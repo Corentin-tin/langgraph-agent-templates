@@ -107,6 +107,12 @@ langgraph-agent-templates/
     └── ci.yml              # Automated testing & deployment
 ```
 
+## 🏗️ Architecture
+
+![Architecture Diagram](archi_diagram.png)
+
+The architecture shows the complete deployment pipeline from Docker Compose environment through CI/CD workflows to Kubernetes cluster deployment. Both React and RAG agents share common infrastructure while maintaining their specific components and dependencies.
+
 ## 🤖 Agent Overview
 
 ### React Agent
