@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  react-agent:
+    build: 
+      context: ./apps/react_agent
+      dockerfile: Dockerfile
+    ports:
+      - "2024:2024"
+    environment:
+      - LOG_LEVEL=INFO
+      - ENVIRONMENT=production
+    env_file:
+      - ./apps/react_agent/.env.example
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:2024/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    networks:
+      - langgraph-network
+
+  rag-agent:
+    build:
+      context: ./apps/rag_agent
+      dockerfile: Dockerfile
+    ports:
+      - "2025:2025"
+    environment:
+      - LOG_LEVEL=INFO
+      - ENVIRONMENT=production
+      - VECTOR_STORE=faiss  # Default to FAISS for simplicity
+    env_file:
+      - ./apps/rag_agent/.env.example
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:2025/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    networks:
+      - langgraph-network
+
+  # Optional: Elasticsearch for RAG agent
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0
+    container_name: langgraph-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    networks:
+      - langgraph-network
+    profiles:
+      - elasticsearch
+
+  # Optional: Redis for caching
+  redis:
+    image: redis:7-alpine
+    container_name: langgraph-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - langgraph-network
+    profiles:
+      - redis
+
+volumes:
+  elasticsearch-data:
+  redis-data:
+
+networks:
+  langgraph-network:
+    driver: bridge
